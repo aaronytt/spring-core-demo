@@ -20,15 +20,13 @@ public abstract class BaseServiceImpl<T extends BaseEntity<ID>,ID extends Serial
     protected K mapper;
 
     @Override
-    public T insert(T record){
-        mapper.insert(record);
-        return record;
+    public int insert(T record){
+        return mapper.insert(record);
     }
 
     @Override
-    public T insertSelective(T record){
-        mapper.insertSelective(record);
-        return record;
+    public int insertSelective(T record){
+        return mapper.insertSelective(record);
     }
 
     @Override

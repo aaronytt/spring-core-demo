@@ -13,9 +13,9 @@ import java.util.List;
  */
 public interface BaseService<T extends BaseEntity<ID>, ID extends Serializable> {
 
-    T insert(T record);
+    int insert(T record);
 
-    T insertSelective(T record);
+    int insertSelective(T record);
 
     int deleteByPrimaryKey(ID id);
 
