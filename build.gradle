@@ -5,7 +5,7 @@ plugins {
 
 apply plugin: 'io.spring.dependency-management'
 
-group = 'com.ytt.spring'
+group = 'com.ytt.springcoredemo'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 

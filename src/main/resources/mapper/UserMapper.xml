@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ytt.spring.springcore.mybatis.mapper.UserMapper">
 
-    <resultMap id="userMap" type="com.ytt.spring.springcore.model.po.User">
+    <resultMap id="userMap" type="com.ytt.springcoredemo.model.po.User">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="username" jdbcType="VARCHAR" property="username" javaType="java.lang.String" />
         <result column="password" jdbcType="VARCHAR" property="password" javaType="java.lang.String"/>
@@ -35,7 +35,7 @@
         </if>
     </sql>
 
-    <insert id="insert" parameterType="com.ytt.spring.springcore.model.po.User" keyProperty="id" useGeneratedKeys="true">
+    <insert id="insert" parameterType="com.ytt.springcoredemo.model.po.User" keyProperty="id" useGeneratedKeys="true">
         <!-- 插入返回插入记录的主键id
         keyProperty		===>	映射到数据库的主键为当前pojo的哪个字段
         resultType		===>	字段的类型
@@ -50,14 +50,14 @@
             (<include refid="user_addParam"/>)
     </insert>
 
-    <select id="selectSelective" resultMap="userMap" parameterType="com.ytt.spring.springcore.model.po.User" useCache="false">
+    <select id="selectSelective" resultMap="userMap" parameterType="com.ytt.springcoredemo.model.po.User" useCache="false">
         SELECT
           <include refid="user_allField"/>
         FROM
           r_user
-        WHERE
-            1=1
+        <where>
           <include refid="user_allCondition"/>
+        </where>
     </select>
 
 </mapper>

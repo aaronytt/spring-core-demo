@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ytt.spring.springcore.mybatis.mapper.GoodMapper">
 
-    <resultMap id="goodMap" type="com.ytt.spring.springcore.model.po.Good">
+    <resultMap id="goodMap" type="com.ytt.springcoredemo.model.po.Good">
         <id column="id" jdbcType="BIGINT" property="id"  javaType="java.lang.Long"/>
         <result column="name" jdbcType="VARCHAR" property="name" javaType="java.lang.String" />
         <result column="price" jdbcType="DECIMAL" property="price" javaType="org.joda.money.Money"/>
@@ -34,7 +34,7 @@
         </if>
     </sql>
 
-    <insert id="insert" parameterType="com.ytt.spring.springcore.model.po.Good" keyProperty="id" useGeneratedKeys="true">
+    <insert id="insert" parameterType="com.ytt.springcoredemo.model.po.Good" keyProperty="id" useGeneratedKeys="true">
         <!-- 插入返回插入记录的主键id
         keyProperty		===>	映射到数据库的主键为当前pojo的哪个字段
         resultType		===>	字段的类型
@@ -49,7 +49,7 @@
             (<include refid="good_addParam"/>)
     </insert>
 
-    <select id="selectByPrimaryKey" resultMap="goodMap" parameterType="com.ytt.spring.springcore.model.po.Good" useCache="false">
+    <select id="selectByPrimaryKey" resultMap="goodMap" parameterType="com.ytt.springcoredemo.model.po.Good" useCache="false">
         SELECT
             <include refid="good_allField"/>
         FROM
@@ -58,14 +58,14 @@
             id = #{id}
     </select>
 
-    <select id="selectSelective" resultMap="goodMap" parameterType="com.ytt.spring.springcore.model.po.Good" useCache="false">
+    <select id="selectSelective" resultMap="goodMap" parameterType="com.ytt.springcoredemo.model.po.Good" useCache="false">
         SELECT
           <include refid="good_allField"/>
         FROM
             good
-        WHERE
-            1=1
-          <include refid="good_allCondition"/>
+        <where>
+            <include refid="good_allCondition"/>
+        </where>
     </select>
 
 </mapper>
