@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytt.spring.springcore.mybatis.mapper.UserMapper">
+
+    <resultMap id="userMap" type="com.ytt.spring.springcore.model.po.User">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="username" jdbcType="VARCHAR" property="username" javaType="java.lang.String" />
+        <result column="password" jdbcType="VARCHAR" property="password" javaType="java.lang.String"/>
+        <result column="age" jdbcType="BIGINT" property="age" javaType="java.lang.Integer"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" javaType="java.time.LocalDateTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" javaType="java.time.LocalDateTime"/>
+    </resultMap>
+
+    <sql id="user_addField">
+        username,password,age
+    </sql>
+
+    <sql id="user_addParam">
+        #{username},#{password},#{age}
+    </sql>
+
+    <sql id="user_allField">
+        id,<include refid="user_addField"/>,create_time,update_time
+    </sql>
+
+    <sql id="user_allCondition">
+        <if test="id != null">
+            AND id = #{id}
+        </if>
+        <if test="username != null and username != ''">
+            AND username= #{username}
+        </if>
+        <if test="password != null and password != ''">
+            AND password = #{password}
+        </if>
+    </sql>
+
+    <insert id="insert" parameterType="com.ytt.spring.springcore.model.po.User" keyProperty="id" useGeneratedKeys="true">
+        <!-- 插入返回插入记录的主键id
+        keyProperty		===>	映射到数据库的主键为当前pojo的哪个字段
+        resultType		===>	字段的类型
+        order			===>	排序，要插入后才知道id是多少，所以当然是AFTER（之后），触发是UUID就可以是BEFORE -->
+<!--        <selectKey keyProperty="id" resultType="java.lang.Long" order="AFTER">-->
+<!--          select last_insert_id()-->
+<!--        </selectKey>-->
+
+        INSERT r_user
+            (<include refid="user_addField"/>)
+          VALUES
+            (<include refid="user_addParam"/>)
+    </insert>
+
+    <select id="selectSelective" resultMap="userMap" parameterType="com.ytt.spring.springcore.model.po.User" useCache="false">
+        SELECT
+          <include refid="user_allField"/>
+        FROM
+          r_user
+        WHERE
+            1=1
+          <include refid="user_allCondition"/>
+    </select>
+
+</mapper>

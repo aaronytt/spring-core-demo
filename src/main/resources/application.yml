@@ -1,0 +1,36 @@
+
+spring:
+  application:
+    name: spring-core-dome
+  datasource:
+    name: ytt
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: 'jdbc:mysql://localhost:3306/zcc?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&'
+    # 使用hikari数据源
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: 'DatebookHikariCP'
+      max-lifetime: 1800000
+      connection-timeout: 60000
+      connection-test-query: 'SELECT 1'
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  #  typeAliasesPackage: com.ytt
+  type-handlers-package: com.ytt.spring.springcore.mybatis.handler
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    useGeneratedKeys: true
+
+logging:
+  config: classpath:log4j2.yml
+#  level:
+#    org.springframework.boot.autoconfigure: ERROR
+
+

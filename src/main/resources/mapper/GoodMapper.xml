@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytt.spring.springcore.mybatis.mapper.GoodMapper">
+
+    <resultMap id="goodMap" type="com.ytt.spring.springcore.model.po.Good">
+        <id column="id" jdbcType="BIGINT" property="id"  javaType="java.lang.Long"/>
+        <result column="name" jdbcType="VARCHAR" property="name" javaType="java.lang.String" />
+        <result column="price" jdbcType="DECIMAL" property="price" javaType="org.joda.money.Money"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" javaType="java.time.LocalDateTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" javaType="java.time.LocalDateTime"/>
+    </resultMap>
+
+    <sql id="good_addField">
+        name,price
+    </sql>
+
+    <sql id="good_addParam">
+        #{name},#{price}
+    </sql>
+
+    <sql id="good_allField">
+        id,<include refid="good_addField"/>,create_time,update_time
+    </sql>
+
+    <sql id="good_allCondition">
+        <if test="id != null">
+            AND id = #{id}
+        </if>
+        <if test="name != null and name != ''">
+            AND name= #{name}
+        </if>
+        <if test="price != null">
+            AND price = #{price}
+        </if>
+    </sql>
+
+    <insert id="insert" parameterType="com.ytt.spring.springcore.model.po.Good" keyProperty="id" useGeneratedKeys="true">
+        <!-- 插入返回插入记录的主键id
+        keyProperty		===>	映射到数据库的主键为当前pojo的哪个字段
+        resultType		===>	字段的类型
+        order			===>	排序，要插入后才知道id是多少，所以当然是AFTER（之后），触发是UUID就可以是BEFORE -->
+<!--        <selectKey keyProperty="id" resultType="java.lang.Long" order="AFTER">-->
+<!--          select last_insert_id()-->
+<!--        </selectKey>-->
+
+        INSERT good
+            (<include refid="good_addField"/>)
+          VALUES
+            (<include refid="good_addParam"/>)
+    </insert>
+
+    <select id="selectByPrimaryKey" resultMap="goodMap" parameterType="com.ytt.spring.springcore.model.po.Good" useCache="false">
+        SELECT
+            <include refid="good_allField"/>
+        FROM
+            good
+        WHERE
+            id = #{id}
+    </select>
+
+    <select id="selectSelective" resultMap="goodMap" parameterType="com.ytt.spring.springcore.model.po.Good" useCache="false">
+        SELECT
+          <include refid="good_allField"/>
+        FROM
+            good
+        WHERE
+            1=1
+          <include refid="good_allCondition"/>
+    </select>
+
+</mapper>
