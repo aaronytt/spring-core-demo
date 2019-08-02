@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytt.springcoredemo.mybatis.mapper.OrderMapper">
+  
+  <resultMap id="orderMap" type="com.ytt.springcoredemo.model.po.Order">
+    <id column="id" jdbcType="INTEGER" property="id" javaType="java.lang.Long" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" javaType="java.time.LocalDateTime"/>
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" javaType="java.time.LocalDateTime"/>
+
+    <result column="order_number" jdbcType="VARCHAR" property="orderNumber" javaType="java.lang.String" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" javaType="java.lang.Long" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" javaType="org.joda.money.Money" />
+    <result column="state" jdbcType="TINYINT" property="state" javaType="com.ytt.springcoredemo.model.enumeration.OrderState"/>
+  </resultMap>
+
+  <sql id="Order_Add_Column_List">
+    order_number, customer_id, amount, `state`
+  </sql>
+
+  <sql id="Order_Add_Column_List_Param">
+    #{orderNumber}, #{customerId},#{amount},#{state}
+  </sql>
+
+  <sql id="Order_Add_Column_List_Selective">
+    <if test="orderNumber != null">
+      order_number,
+    </if>
+    <if test="customerId != null">
+      customer_id,
+    </if>
+    <if test="amount != null">
+      amount,
+    </if>
+    <if test="state != null">
+      `state`,
+    </if>
+  </sql>
+
+  <sql id="Order_Add_Column_List_Param_Selective">
+    <if test="orderNumber != null">
+      #{orderNumber},
+    </if>
+    <if test="customerId != null">
+      #{customerId},
+    </if>
+    <if test="amount != null">
+      #{amount},
+    </if>
+    <if test="state != null">
+      #{state},
+    </if>
+  </sql>
+
+  <sql id="Order_Update_Column_List_Param">
+    order_number = #{orderNumber},
+    customer_id = #{customerId},
+    amount = #{amount},
+    `state` = #{state}
+  </sql>
+
+  <sql id="Order_Update_Column_List_Param_Selective">
+    <if test="orderNumber != null">
+      order_number = #{orderNumber},
+    </if>
+    <if test="customerId != null">
+      customer_id = #{customerId},
+    </if>
+    <if test="amount != null">
+      amount = #{amount},
+    </if>
+    <if test="state != null">
+      `state` = #{state},
+    </if>
+  </sql>
+
+  <sql id="Order_Column_List">
+    id, order_number, customer_id, amount, `state`, create_time, update_time
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="orderMap">
+    select
+        <include refid="Order_Column_List" />
+    from `order`
+    where id = #{id}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from `order`
+    where id = #{id}
+  </delete>
+
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ytt.springcoredemo.model.po.Order" useGeneratedKeys="true">
+    insert into `order`
+        (<include refid="Order_Column_List"/>)
+    values
+        (<include refid="Order_Add_Column_List_Param"/>)
+  </insert>
+
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.ytt.springcoredemo.model.po.Order" useGeneratedKeys="true">
+    insert into `order`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+        <include refid="Order_Add_Column_List_Selective"/>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+        <include refid="Order_Add_Column_List_Param_Selective"/>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.ytt.springcoredemo.model.po.Order">
+    update `order`
+    <set>
+        <include refid="Order_Update_Column_List_Param_Selective"/>
+    </set>
+    where id = #{id}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.ytt.springcoredemo.model.po.Order">
+    update `order`
+    set <include refid="Order_Update_Column_List_Param"/>
+    where id = #{id}
+  </update>
+
+  <resultMap id="orderMapOfSub" extends="orderMap" type="com.ytt.springcoredemo.model.po.Order" >
+    <collection property="subOrderList" column="order_number"
+                ofType="com.ytt.springcoredemo.model.po.SubOrder"
+                select="com.ytt.springcoredemo.mybatis.mapper.SubOrderMapper.selectByOrderNumber"/>
+  </resultMap>
+
+  <sql id="Order_Select_Column_List_Param_Selective">
+    <if test="id != null">
+      and id = #{id}
+    </if>
+    <if test="orderNumber != null">
+      and order_number = #{orderNumber}
+    </if>
+    <if test="customerId != null">
+      and customer_id = #{customerId}
+    </if>
+    <if test="amount != null">
+      and amount = #{amount}
+    </if>
+    <if test="state != null">
+      and `state` = #{state}
+    </if>
+  </sql>
+
+  <select id="selectInfoBySelective" resultMap="orderMapOfSub">
+    select <include refid="Order_Column_List" />
+    from `order`
+    <where>
+      <include refid="Order_Select_Column_List_Param_Selective"/>
+    </where>
+  </select>
+
+</mapper>

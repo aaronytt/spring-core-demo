@@ -1,5 +1,7 @@
 package com.ytt.springcoredemo.mybatis.handler;
 
+import com.ytt.springcoredemo.model.enumeration.OrderState;
+import com.ytt.springcoredemo.util.OptionalUtil;
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedTypes;
@@ -11,6 +13,7 @@ import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 
 /**
  * @Author: aaron
@@ -23,29 +26,31 @@ public class MoneyTypeHandler extends BaseTypeHandler<Money> {
 
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, Money parameter, JdbcType jdbcType) throws SQLException {
-        if(parameter == null){
-            ps.setBigDecimal(i,null);
-        }else {
-            ps.setBigDecimal(i,parameter.getAmount());
-        }
+        ps.setBigDecimal(i,Optional.ofNullable(parameter.getAmount()).orElseGet(() -> null));
     }
 
     @Override
     public Money getNullableResult(ResultSet rs, String columnName) throws SQLException {
-        BigDecimal result = rs.getBigDecimal(columnName);
-        return null == result ? null : Money.of(CurrencyUnit.of("CNY"), rs.getBigDecimal(columnName).setScale(2));
+        return OptionalUtil.getTarget(
+                Optional.of(rs.getBigDecimal(columnName)),
+                result -> Money.of(CurrencyUnit.of("CNY"), result.setScale(2))
+        );
     }
 
     @Override
     public Money getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
-        BigDecimal result = rs.getBigDecimal(columnIndex);
-        return null == result ? null : Money.of(CurrencyUnit.of("CNY"), rs.getBigDecimal(columnIndex).setScale(2));
+        return OptionalUtil.getTarget(
+                Optional.of(rs.getBigDecimal(columnIndex)),
+                result -> Money.of(CurrencyUnit.of("CNY"), result.setScale(2))
+        );
     }
 
     @Override
     public Money getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
-        BigDecimal result = cs.getBigDecimal(columnIndex);
-        return null == result ? null : Money.of(CurrencyUnit.of("CNY"), cs.getBigDecimal(columnIndex).setScale(2));
+        return OptionalUtil.getTarget(
+                Optional.of(cs.getBigDecimal(columnIndex)),
+                result -> Money.of(CurrencyUnit.of("CNY"), result.setScale(2))
+        );
     }
 
 }

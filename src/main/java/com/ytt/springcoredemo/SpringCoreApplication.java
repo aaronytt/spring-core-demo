@@ -1,10 +1,13 @@
 package com.ytt.springcoredemo;
 
 import org.aopalliance.intercept.MethodInterceptor;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.aop.framework.autoproxy.InfrastructureAdvisorAutoProxyCreator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.AnnotationTransactionAttributeSource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.interceptor.TransactionInterceptor;
 
 /**
@@ -27,8 +30,6 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
  *
  */
 //@EnableTransactionManagement
-//@ComponentScan("com.ytt")
-//@MapperScan("com.ytt.spring.springcore.mybatis.mapper")
 @SpringBootApplication
 public class SpringCoreApplication {
 

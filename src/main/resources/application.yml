@@ -1,4 +1,10 @@
 
+logging:
+  config: classpath:logback-spring.xml
+  path: log
+#  level:
+#    org.springframework.boot.autoconfigure: ERROR
+
 spring:
   application:
     name: spring-core-dome
@@ -23,14 +29,11 @@ spring:
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
   #  typeAliasesPackage: com.ytt
-  type-handlers-package: com.ytt.spring.springcore.mybatis.handler
+  type-handlers-package: com.ytt.springcoredemo.mybatis.handler
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     useGeneratedKeys: true
 
-logging:
-  config: classpath:log4j2.yml
-#  level:
-#    org.springframework.boot.autoconfigure: ERROR
+
 
 

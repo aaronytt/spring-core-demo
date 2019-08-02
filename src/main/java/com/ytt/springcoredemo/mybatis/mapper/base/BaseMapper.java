@@ -1,4 +1,4 @@
-package com.ytt.springcoredemo.mybatis.mapper;
+package com.ytt.springcoredemo.mybatis.mapper.base;
 
 import java.io.Serializable;
 import java.util.List;

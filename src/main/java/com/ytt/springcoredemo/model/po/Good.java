@@ -18,7 +18,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode
-public class Good extends BaseEntity<Long> implements Serializable {
+public class Good extends BaseEntity<Long> {
 
     private String name;
 

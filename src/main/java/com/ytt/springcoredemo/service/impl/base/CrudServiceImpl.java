@@ -1,9 +1,8 @@
-package com.ytt.springcoredemo.service.impl;
+package com.ytt.springcoredemo.service.impl.base;
 
-import com.ytt.springcoredemo.service.BaseService;
 import com.ytt.springcoredemo.model.BaseEntity;
-import com.ytt.springcoredemo.mybatis.mapper.BaseMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.ytt.springcoredemo.mybatis.mapper.base.BaseMapper;
+import com.ytt.springcoredemo.service.base.CrudBaseService;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,36 +10,35 @@ import java.util.List;
 /**
  * @Author: aaron
  * @Descriotion:
- * @Date: 0:07 2019/7/31
+ * @Date: 2:47 2-119/8/1
  * @Modiflid By:
  */
-public abstract class BaseServiceImpl<T extends BaseEntity<ID>,ID extends Serializable,K extends BaseMapper<T,ID>> implements BaseService<T, ID> {
-
-    @Autowired
-    protected K mapper;
+public class CrudServiceImpl<T extends BaseEntity<ID>, ID extends Serializable, K extends BaseMapper<T, ID>>
+        extends DaoBaseServiceImpl<T, ID, K>
+        implements CrudBaseService<T, ID> {
 
     @Override
-    public int insert(T record){
+    public int save(T record){
         return mapper.insert(record);
     }
 
     @Override
-    public int insertSelective(T record){
+    public int saveSelective(T record){
         return mapper.insertSelective(record);
     }
 
     @Override
-    public int deleteByPrimaryKey(ID id){
+    public int deleteByID(ID id){
         return mapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public T selectByPrimaryKey(ID id){
+    public T fetchByID(ID id){
         return mapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public List<T> selectSelective(T record){
+    public List<T> fetchSelective(T record){
         return mapper.selectSelective(record);
     }
 

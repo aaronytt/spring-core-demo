@@ -5,24 +5,25 @@ import com.ytt.springcoredemo.model.enumeration.OrderState;
 import lombok.*;
 import org.joda.money.Money;
 
-import java.util.List;
-
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode
-public class Order extends BaseEntity<Long> {
+public class SubOrder extends BaseEntity<Long> {
 
     private String orderNumber;
 
-    private Long customerId;
+    private String subOrderNumber;
 
     private Money amount;
 
     private OrderState state;
 
-    private List<SubOrder> subOrderList;
+    private Long goodId;
 
+    private Integer quantity;
+
+    private static final long serialVersionUID = 1L;
 }

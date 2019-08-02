@@ -1,6 +1,7 @@
 package com.ytt.springcoredemo.mybatis.mapper;
 
 import com.ytt.springcoredemo.model.po.Good;
+import com.ytt.springcoredemo.mybatis.mapper.base.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

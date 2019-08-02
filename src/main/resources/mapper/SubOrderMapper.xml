@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytt.springcoredemo.mybatis.mapper.SubOrderMapper">
+
+  <resultMap id="BaseResultMap" type="com.ytt.springcoredemo.model.po.SubOrder">
+    <id column="id" jdbcType="INTEGER" property="id" javaType="java.lang.Long" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" javaType="java.time.LocalDateTime"/>
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" javaType="java.time.LocalDateTime"/>
+
+    <result column="order_number" jdbcType="VARCHAR" property="orderNumber" javaType="java.lang.String" />
+    <result column="sub_order_number" jdbcType="VARCHAR" property="subOrderNumber" javaType="java.lang.String" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" javaType="org.joda.money.Money" />
+    <result column="state" jdbcType="TINYINT" property="state" javaType="com.ytt.springcoredemo.model.enumeration.OrderState" />
+    <result column="good_id" jdbcType="INTEGER" property="goodId" javaType="java.lang.Long" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" javaType="java.lang.Integer" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, order_number, sub_order_number, amount, `state`, good_id, quantity, create_time, update_time
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sub_order
+    where id = #{id}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sub_order
+    where id = #{id}
+  </delete>
+
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ytt.springcoredemo.model.po.SubOrder" useGeneratedKeys="true">
+    insert into sub_order (order_number, sub_order_number, amount, `state`, good_id, quantity)
+    values (#{orderNumber}, #{subOrderNumber}, #{amount}, #{state}, #{goodId}, #{quantity})
+  </insert>
+
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.ytt.springcoredemo.model.po.SubOrder" useGeneratedKeys="true">
+    insert into sub_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderNumber != null">
+        order_number,
+      </if>
+      <if test="subOrderNumber != null">
+        sub_order_number,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="goodId != null">
+        good_id,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderNumber != null">
+        #{orderNumber},
+      </if>
+      <if test="subOrderNumber != null">
+        #{subOrderNumber},
+      </if>
+      <if test="amount != null">
+        #{amount},
+      </if>
+      <if test="state != null">
+        #{state},
+      </if>
+      <if test="goodId != null">
+        #{goodId},
+      </if>
+      <if test="quantity != null">
+        #{quantity},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.ytt.springcoredemo.model.po.SubOrder">
+    update sub_order
+    <set>
+      <if test="orderNumber != null">
+        order_number = #{orderNumber},
+      </if>
+      <if test="subOrderNumber != null">
+        sub_order_number = #{subOrderNumber},
+      </if>
+      <if test="amount != null">
+        amount = #{amount},
+      </if>
+      <if test="state != null">
+        `state` = #{state},
+      </if>
+      <if test="goodId != null">
+        good_id = #{goodId},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.ytt.springcoredemo.model.po.SubOrder">
+    update sub_order
+    set order_number = #{orderNumber},
+      sub_order_number = #{subOrderNumber},
+      amount = #{amount},
+      `state` = #{state},
+      good_id = #{goodId},
+      quantity = #{quantity}
+    where id = #{id}
+  </update>
+
+  <select id="selectByOrderNumber" parameterType="string" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sub_order
+    where order_number = #{orderNumber}
+  </select>
+</mapper>

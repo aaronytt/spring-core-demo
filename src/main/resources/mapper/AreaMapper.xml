@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytt.springcoredemo.mybatis.mapper.AreaMapper">
+  <resultMap id="BaseResultMap" type="com.ytt.springcoredemo.model.po.Area">
+    <id column="id" jdbcType="BIGINT" property="id" javaType="java.lang.Integer" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" javaType="java.time.LocalDateTime"/>
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" javaType="java.time.LocalDateTime"/>
+
+    <result column="name" jdbcType="VARCHAR" property="name" javaType="java.lang.String" />
+    <result column="level" jdbcType="TINYINT" property="level" javaType="java.lang.Byte" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" javaType="java.lang.Integer" />
+  </resultMap>
+
+  <sql id="Area_Add_Column_List">
+    `name`, `level`, parent_id
+  </sql>
+
+  <sql id="Area_Add_Column_List_Param">
+    #{name}, #{level}, #{parentId}
+  </sql>
+
+  <sql id="Area_Add_Column_List_Selective">
+    <if test="name != null">
+      `name`,
+    </if>
+    <if test="level != null">
+      `level`,
+    </if>
+    <if test="parentId != null">
+      parent_id,
+    </if>
+  </sql>
+
+  <sql id="Area_Add_Column_List_Param_Selective">
+    <if test="name != null">
+      #{name},
+    </if>
+    <if test="level != null">
+      #{level},
+    </if>
+    <if test="parentId != null">
+      #{parentId},
+    </if>
+  </sql>
+
+  <sql id="Area_Update_Column_List_Param">
+    `name` = #{name},
+    `level` = #{level},
+    parent_id = #{parentId},
+  </sql>
+
+  <sql id="Area_Update_Column_List_Param_Selective">
+    <if test="AreaNumber != null">
+      Area_number = #{AreaNumber},
+    </if>
+    <if test="customerId != null">
+      customer_id = #{customerId},
+    </if>
+    <if test="state != null">
+      `state` = #{state},
+    </if>
+  </sql>
+
+  <sql id="Area_Column_List">
+    id, <include refid="Area_Add_Column_List"/>, create_time, update_time
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+        <include refid="Area_Column_List" />
+    from area
+    where id = #{id}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from area
+    where id = #{id}
+  </delete>
+
+  <insert id="insert" parameterType="com.ytt.springcoredemo.model.po.Area">
+    insert into area
+        (<include refid="Area_Add_Column_List"/>)
+    values
+        (<include refid="Area_Add_Column_List_Param"/>)
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.ytt.springcoredemo.model.po.Area">
+    insert into area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <include refid="Area_Add_Column_List_Selective"/>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <include refid="Area_Add_Column_List_Param_Selective"/>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.ytt.springcoredemo.model.po.Area">
+    update area
+    <set>
+      <include refid="Area_Update_Column_List_Param"/>
+    </set>
+    where id = #{id}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.ytt.springcoredemo.model.po.Area">
+    update area
+    set <include refid="Area_Update_Column_List_Param"/>
+    where id = #{id}
+  </update>
+</mapper>

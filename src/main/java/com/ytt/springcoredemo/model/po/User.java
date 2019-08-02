@@ -17,7 +17,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class User extends BaseEntity<Long> implements Serializable {
+public class User extends BaseEntity<Long> {
 
     private String username;
 
