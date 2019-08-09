@@ -1,4 +1,4 @@
-package com.ytt.springcoredemo.context.annotation.config.factory;
+package com.ytt.springcoredemo.annotation.config.factory;
 
 import com.ytt.springcoredemo.model.Apple;
 import org.springframework.beans.factory.FactoryBean;

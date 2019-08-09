@@ -1,11 +1,10 @@
-package com.ytt.springcoredemo.context.annotation;
+package com.ytt.springcoredemo.annotation;
 
-import com.ytt.spring.context.annotation.model.Bird;
 import com.ytt.springcoredemo.SpringCoreApplication;
+import com.ytt.springcoredemo.model.Bird;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.PropertySource;
@@ -20,7 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringCoreApplication.class)
 @PropertySource(value = "classpath:My.properties")
-public class SpringAnnotationApplication {
+public class SpringAnnotationApplicationTest {
     /**
      * Autowired按照类型注入，可以注入空
      *
@@ -39,7 +38,6 @@ public class SpringAnnotationApplication {
 
     @Test
     public void test(String[] args) {
-        SpringApplication.run(SpringAnnotationApplication.class);
 
         System.out.println("IOC容器创建完成...");
 

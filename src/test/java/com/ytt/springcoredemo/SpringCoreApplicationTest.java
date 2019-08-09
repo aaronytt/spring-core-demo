@@ -1,5 +1,6 @@
 package com.ytt.springcoredemo;
 
+import com.ytt.springcoredemo.model.Car;
 import com.ytt.springcoredemo.model.po.Area;
 import com.ytt.springcoredemo.model.po.Good;
 import com.ytt.springcoredemo.model.po.Order;
@@ -13,9 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.awt.*;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringCoreApplication.class)
 public class SpringCoreApplicationTest {
+
+    @Autowired
+    Car car;
 
     @Autowired
     private UserService userService;
@@ -35,6 +41,9 @@ public class SpringCoreApplicationTest {
 
     @Test
     public void test(){
+
+        System.out.println(car);
+
 //        User user = new User();
 //        user.setUsername("ytt");
 //        user.setPassword("1234456");
@@ -43,8 +52,8 @@ public class SpringCoreApplicationTest {
 //        userService.save(user);
 //        System.out.println(user);
 
-        Good good = goodService.fetchByID(1l);
-        System.out.println(good);
+//        Good good = goodService.fetchByID(1l);
+//        System.out.println(good);
 
     }
 
@@ -62,7 +71,6 @@ public class SpringCoreApplicationTest {
         Order result = orderService.getOrderInfo(order);
 
         System.out.println(result);
-
     }
 
 }

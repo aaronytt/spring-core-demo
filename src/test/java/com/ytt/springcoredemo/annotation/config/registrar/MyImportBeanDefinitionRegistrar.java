@@ -1,4 +1,4 @@
-package com.ytt.springcoredemo.context.annotation.config.registrar;
+package com.ytt.springcoredemo.annotation.config.registrar;
 
 import com.ytt.springcoredemo.model.Pig;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;

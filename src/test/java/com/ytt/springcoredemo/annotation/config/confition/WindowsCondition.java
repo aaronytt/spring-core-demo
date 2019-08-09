@@ -1,4 +1,4 @@
-package com.ytt.springcoredemo.context.annotation.config.confition;
+package com.ytt.springcoredemo.annotation.config.confition;
 
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.annotation.Condition;

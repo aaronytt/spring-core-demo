@@ -1,6 +1,6 @@
-package com.ytt.springcoredemo.context.annotation.config;
+package com.ytt.springcoredemo.annotation.config;
 
-import com.ytt.spring.context.annotation.model.Bird;
+import com.ytt.springcoredemo.model.Bird;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
