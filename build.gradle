@@ -42,13 +42,19 @@ dependencies {
             'org.projectlombok:lombok'
     )
 
-    implementation('org.mybatis:mybatis:3.5.3-SNAPSHOT'){
-//        exclude module: 'cglib' //by artifact name
-//        exclude group: 'org.jmock' //by group
-//        exclude group: 'org.unwanted', module: 'iAmBuggy' //by both name and group
+//    implementation('org.mybatis:mybatis:3.5.2'){
+////        exclude module: 'cglib' //by artifact name
+////        exclude group: 'org.jmock' //by group
+////        exclude group: 'org.unwanted', module: 'iAmBuggy' //by both name and group
+//
+//        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+//    }
 
-        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
-    }
+//    implementation('org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0',){
+//        exclude group: 'org.mybatis', module: 'mybatis' //by both name and group
+//    }
+//
+//    compile project(':mybatis-3-master')
 
     implementation(
 
@@ -58,6 +64,9 @@ dependencies {
             'org.springframework.boot:spring-boot-starter-jdbc',
             'com.zaxxer:HikariCP',
             'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0',
+            // https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter
+            'com.github.pagehelper:pagehelper-spring-boot-starter:1.2.12',
+
 
             'org.springframework.boot:spring-boot-starter-validation',
             'javax.validation:validation-api',

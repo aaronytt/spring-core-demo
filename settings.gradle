@@ -1,1 +1,3 @@
 rootProject.name = 'spring-core'
+
+//includeFlat 'mybatis-3-master'

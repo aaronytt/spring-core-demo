@@ -16,11 +16,11 @@ public class Bird {
         super();
     }
 
-    @Value("sam")
+//    @Value("sam")
     private String name;
-    @Value("#{20-2}")
+//    @Value("#{20-2}")
     private Integer age;
-    @Value("${color}")
+//    @Value("${color}")
     private String color;
 
     public String drive(String name){
