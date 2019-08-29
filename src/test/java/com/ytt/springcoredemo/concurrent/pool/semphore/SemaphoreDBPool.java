@@ -1,6 +1,6 @@
 package com.ytt.springcoredemo.concurrent.pool.semphore;
 
-import com.ytt.springcoredemo.concurrent.pool.SqlConnectionImpl;
+import com.ytt.springcoredemo.concurrent.pool.db.SqlConnectionImpl;
 
 import java.sql.Connection;
 import java.util.LinkedList;

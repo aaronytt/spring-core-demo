@@ -18,12 +18,13 @@ public class UseFuture {
         FutureTask<Integer> futureTask = new FutureTask(myCallable);
         Thread thread = new Thread(futureTask);
         thread.start();
-        if( new Random().nextInt(2) == 1 ){
-            System.out.println(futureTask.get());
-        }else {
-            System.out.println(futureTask.cancel(true));
-        }
-        System.out.println(futureTask.isCancelled() + "--------------" + futureTask.isDone());
+        System.out.println(futureTask.get());
+//        if( new Random().nextInt(2) == 1 ){
+//            System.out.println(futureTask.get());
+//        }else {
+//            System.out.println(futureTask.cancel(true));
+//        }
+//        System.out.println(futureTask.isCancelled() + "--------------" + futureTask.isDone());
     }
 
 }

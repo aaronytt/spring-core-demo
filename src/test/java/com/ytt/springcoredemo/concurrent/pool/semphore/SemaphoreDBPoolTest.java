@@ -1,16 +1,9 @@
 package com.ytt.springcoredemo.concurrent.pool.semphore;
 
-import com.ytt.springcoredemo.concurrent.pool.DBPool;
-import com.ytt.springcoredemo.concurrent.pool.SqlConnectionImpl;
-
 import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.LinkedList;
 import java.util.Optional;
-import java.util.Queue;
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**

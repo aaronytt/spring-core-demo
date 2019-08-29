@@ -50,7 +50,7 @@ public class NewThread {
 //        Thread myCall = new Thread(futureTask);
 //        myCall.start();
 //        System.out.println(futureTask.get());
-        new NewThread().wn();
+//        new NewThread().wn();
 
     }
 

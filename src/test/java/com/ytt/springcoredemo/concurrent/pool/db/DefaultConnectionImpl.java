@@ -1,4 +1,4 @@
-package com.ytt.springcoredemo.concurrent.pool;
+package com.ytt.springcoredemo.concurrent.pool.db;
 
 import java.sql.*;
 import java.util.Map;

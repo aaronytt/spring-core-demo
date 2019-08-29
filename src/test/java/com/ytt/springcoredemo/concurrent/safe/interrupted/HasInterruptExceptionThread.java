@@ -1,4 +1,4 @@
-package com.ytt.springcoredemo.concurrent.safe;
+package com.ytt.springcoredemo.concurrent.safe.interrupted;
 
 /**
  * @Author: aaron

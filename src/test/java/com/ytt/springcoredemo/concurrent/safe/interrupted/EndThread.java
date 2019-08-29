@@ -1,6 +1,4 @@
-package com.ytt.springcoredemo.concurrent.safe;
-
-import lombok.Builder;
+package com.ytt.springcoredemo.concurrent.safe.interrupted;
 
 /**
  * @Author: aaron
