@@ -3,7 +3,7 @@ package com.ytt.springcoredemo.mybatis.mapper.base;
 import java.io.Serializable;
 import java.util.List;
 
-public interface BaseMapper<T extends Serializable,ID extends Serializable> {
+public interface BaseMapper<T,ID> {
 
     int insert(T record);
 

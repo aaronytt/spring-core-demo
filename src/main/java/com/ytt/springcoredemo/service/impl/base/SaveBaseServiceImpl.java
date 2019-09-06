@@ -6,7 +6,8 @@ import com.ytt.springcoredemo.service.base.SaveBaseService;
 
 import java.io.Serializable;
 
-public abstract class SaveBaseServiceImpl<T extends BaseEntity<ID>, ID extends Serializable, K extends BaseMapper<T,ID>>
+@Deprecated
+public abstract class SaveBaseServiceImpl<T extends BaseEntity<ID>, ID, K extends BaseMapper<T,ID>>
         extends DaoBaseServiceImpl<T, ID, K> implements SaveBaseService<T,ID> {
 
     @Override

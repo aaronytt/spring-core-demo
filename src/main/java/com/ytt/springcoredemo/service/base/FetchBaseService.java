@@ -5,7 +5,7 @@ import com.ytt.springcoredemo.model.BaseEntity;
 import java.io.Serializable;
 import java.util.List;
 
-public interface FetchBaseService<T extends BaseEntity<ID>, ID extends Serializable>{
+public interface FetchBaseService<T extends BaseEntity<ID>, ID>{
 
     T fetchByID(ID id);
 

@@ -13,7 +13,7 @@ import java.util.List;
  * @Date: 2:47 2-119/8/1
  * @Modiflid By:
  */
-public class CrudServiceImpl<T extends BaseEntity<ID>, ID extends Serializable, K extends BaseMapper<T, ID>>
+public abstract class AbstractCrudServiceImpl<T extends BaseEntity<ID>, ID, K extends BaseMapper<T, ID>>
         extends DaoBaseServiceImpl<T, ID, K>
         implements CrudBaseService<T, ID> {
 

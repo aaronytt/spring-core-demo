@@ -1,6 +1,6 @@
-package com.ytt.springcoredemo.concurrent.practice.processer;
+package com.ytt.springcoredemo.concurrent.practice.concurrent_framework.processer;
 
-import com.ytt.springcoredemo.concurrent.practice.task.TaskResult;
+import com.ytt.springcoredemo.concurrent.practice.concurrent_framework.task.TaskResult;
 
 /**
  * @Author: aaron

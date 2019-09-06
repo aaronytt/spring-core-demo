@@ -1,9 +1,9 @@
-package com.ytt.springcoredemo.concurrent.practice.job;
+package com.ytt.springcoredemo.concurrent.practice.concurrent_framework.job;
 
-import com.ytt.springcoredemo.concurrent.practice.processer.CheckJobProcesser;
-import com.ytt.springcoredemo.concurrent.practice.processer.TaskProcesser;
-import com.ytt.springcoredemo.concurrent.practice.task.TaskResult;
-import com.ytt.springcoredemo.concurrent.practice.task.TaskResultType;
+import com.ytt.springcoredemo.concurrent.practice.concurrent_framework.processer.CheckJobProcesser;
+import com.ytt.springcoredemo.concurrent.practice.concurrent_framework.processer.TaskProcesser;
+import com.ytt.springcoredemo.concurrent.practice.concurrent_framework.task.TaskResult;
+import com.ytt.springcoredemo.concurrent.practice.concurrent_framework.task.TaskResultType;
 
 import java.util.LinkedList;
 import java.util.List;

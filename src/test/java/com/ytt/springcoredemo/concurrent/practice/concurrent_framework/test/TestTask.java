@@ -1,7 +1,7 @@
-package com.ytt.springcoredemo.concurrent.practice.test;
+package com.ytt.springcoredemo.concurrent.practice.concurrent_framework.test;
 
-import com.ytt.springcoredemo.concurrent.practice.processer.TaskProcesser;
-import com.ytt.springcoredemo.concurrent.practice.task.TaskResult;
+import com.ytt.springcoredemo.concurrent.practice.concurrent_framework.processer.TaskProcesser;
+import com.ytt.springcoredemo.concurrent.practice.concurrent_framework.task.TaskResult;
 import com.ytt.springcoredemo.concurrent.util.SleepUtil;
 
 import java.util.Random;

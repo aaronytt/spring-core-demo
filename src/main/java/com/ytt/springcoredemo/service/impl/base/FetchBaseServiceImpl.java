@@ -7,7 +7,8 @@ import com.ytt.springcoredemo.service.base.FetchBaseService;
 import java.io.Serializable;
 import java.util.List;
 
-public abstract class FetchBaseServiceImpl<T extends BaseEntity<ID>, ID extends Serializable, K extends BaseMapper<T,ID>>
+@Deprecated
+public abstract class FetchBaseServiceImpl<T extends BaseEntity<ID>, ID, K extends BaseMapper<T,ID>>
         extends DaoBaseServiceImpl<T, ID, K> implements FetchBaseService<T, ID> {
 
     @Override

@@ -1,4 +1,4 @@
-package com.ytt.springcoredemo.concurrent.practice.task;
+package com.ytt.springcoredemo.concurrent.practice.concurrent_framework.task;
 
 import lombok.ToString;
 

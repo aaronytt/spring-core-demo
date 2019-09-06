@@ -1,8 +1,7 @@
-package com.ytt.springcoredemo.concurrent.practice.test;
+package com.ytt.springcoredemo.concurrent.practice.concurrent_framework.test;
 
-import com.ytt.springcoredemo.concurrent.practice.job.Job;
-import com.ytt.springcoredemo.concurrent.practice.job.JobPool;
-import com.ytt.springcoredemo.concurrent.practice.task.TaskResult;
+import com.ytt.springcoredemo.concurrent.practice.concurrent_framework.job.JobPool;
+import com.ytt.springcoredemo.concurrent.practice.concurrent_framework.task.TaskResult;
 import com.ytt.springcoredemo.concurrent.util.SleepUtil;
 
 import java.util.List;
@@ -44,6 +43,7 @@ public class TestPool {
     public static void main(String[] args) {
         TestTask testTask = new TestTask();
         JobPool pool = JobPool.getPoolInstance();
+
         pool.registerJob(JOB_NAME, JOB_LENGTH, testTask, 10);
 
         for (int i = 0; i < JOB_LENGTH; i++) {

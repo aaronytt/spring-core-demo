@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @Date: 0:07 2019/7/31
  * @Modiflid By:
  */
-public abstract class DaoBaseServiceImpl<T extends BaseEntity<ID>,ID extends Serializable,K extends BaseMapper<T,ID>> implements DaoBaseService {
+public abstract class DaoBaseServiceImpl<T extends BaseEntity<ID>, ID, K extends BaseMapper<T,ID>> implements DaoBaseService {
 
     @Autowired
     protected K mapper;

@@ -4,7 +4,7 @@ import com.ytt.springcoredemo.model.BaseEntity;
 
 import java.io.Serializable;
 
-public interface SaveBaseService<T extends BaseEntity<ID>, ID extends Serializable>{
+public interface SaveBaseService<T extends BaseEntity<ID>, ID>{
 
     int save(T record);
 

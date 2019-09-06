@@ -1,6 +1,6 @@
-package com.ytt.springcoredemo.concurrent.practice.processer;
+package com.ytt.springcoredemo.concurrent.practice.concurrent_framework.processer;
 
-import com.ytt.springcoredemo.concurrent.practice.job.JobPool;
+import com.ytt.springcoredemo.concurrent.practice.concurrent_framework.job.JobPool;
 
 import java.util.concurrent.DelayQueue;
 
@@ -11,7 +11,7 @@ import java.util.concurrent.DelayQueue;
  * @Modiflid By:
  */
 public class CheckJobProcesser {
-    private static DelayQueue<ItemVo<String>> queue = new DelayQueue<ItemVo<String>>();
+    private static DelayQueue<ItemVo<String>> queue = new DelayQueue<>();
 
     //单例模式
     private CheckJobProcesser(){}

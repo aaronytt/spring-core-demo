@@ -2,17 +2,14 @@ package com.ytt.springcoredemo.service.base;
 
 import com.ytt.springcoredemo.model.BaseEntity;
 
-import java.io.Serializable;
-import java.util.List;
-
 /**
  * @Author: aaron
  * @Descriotion:
  * @Date: 3:48 2019/8/1
  * @Modiflid By:
  */
-public interface CrudBaseService<T extends BaseEntity<ID>, ID extends Serializable>
-        extends DaoBaseService, DeleteBaseService<T, ID>, FetchBaseService<T, ID>, SaveBaseService<T, ID>, UpdateBaseService<T, ID> {
+public interface CrudBaseService<T extends BaseEntity<ID>, ID>
+        extends DeleteBaseService<T, ID>, FetchBaseService<T, ID>, SaveBaseService<T, ID>, UpdateBaseService<T, ID> {
 
 //    @Override
 //    default int deleteByID(ID id) {
