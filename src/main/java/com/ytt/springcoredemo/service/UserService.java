@@ -1,5 +1,6 @@
 package com.ytt.springcoredemo.service;
 
+import com.ytt.springcoredemo.model.dto.UserDTO;
 import com.ytt.springcoredemo.model.po.User;
 import com.ytt.springcoredemo.service.base.CrudBaseService;
 
@@ -10,4 +11,9 @@ import com.ytt.springcoredemo.service.base.CrudBaseService;
  * @Modiflid By:
  */
 public interface UserService extends CrudBaseService<User, Long> {
+
+    UserDTO get(UserDTO user);
+
+    UserDTO getById(long id);
+
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ytt.springcoredemo.mybatis.mapper.SubOrderMapper">
+<mapper namespace="com.ytt.springcoredemo.dao.mapper.SubOrderMapper">
 
   <resultMap id="BaseResultMap" type="com.ytt.springcoredemo.model.po.SubOrder">
     <id column="id" jdbcType="INTEGER" property="id" javaType="java.lang.Long" />
@@ -9,7 +9,7 @@
 
     <result column="order_number" jdbcType="VARCHAR" property="orderNumber" javaType="java.lang.String" />
     <result column="sub_order_number" jdbcType="VARCHAR" property="subOrderNumber" javaType="java.lang.String" />
-    <result column="amount" jdbcType="DECIMAL" property="amount" javaType="org.joda.money.Money" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" javaType="java.math.BigDecimal" />
     <result column="state" jdbcType="TINYINT" property="state" javaType="com.ytt.springcoredemo.model.enumeration.OrderState" />
     <result column="good_id" jdbcType="INTEGER" property="goodId" javaType="java.lang.Long" />
     <result column="quantity" jdbcType="INTEGER" property="quantity" javaType="java.lang.Integer" />

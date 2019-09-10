@@ -67,6 +67,7 @@ dependencies {
             // https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter
             'com.github.pagehelper:pagehelper-spring-boot-starter:1.2.12',
 
+            'redis.clients:jedis:3.1.0',
 
             'org.springframework.boot:spring-boot-starter-validation',
             'javax.validation:validation-api',
@@ -87,14 +88,14 @@ dependencies {
 
             'org.apache.commons:commons-lang3',
 
-//            'org.springframework.boot:spring-boot-starter-web',
-
+            'org.springframework.boot:spring-boot-starter-web',
+            'org.springframework.boot:spring-boot-starter-thymeleaf',
 
     )
 
     runtimeOnly(
             'mysql:mysql-connector-java',
-//            'org.springframework.boot:spring-boot-starter-tomcat',
+            'org.springframework.boot:spring-boot-starter-tomcat',
     )
 
     developmentOnly(

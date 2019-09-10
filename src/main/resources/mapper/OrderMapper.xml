@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ytt.springcoredemo.mybatis.mapper.OrderMapper">
+<mapper namespace="com.ytt.springcoredemo.dao.mapper.OrderMapper">
   
   <resultMap id="orderMap" type="com.ytt.springcoredemo.model.po.Order">
     <id column="id" jdbcType="INTEGER" property="id" javaType="java.lang.Long" />
@@ -9,7 +9,7 @@
 
     <result column="order_number" jdbcType="VARCHAR" property="orderNumber" javaType="java.lang.String" />
     <result column="customer_id" jdbcType="INTEGER" property="customerId" javaType="java.lang.Long" />
-    <result column="amount" jdbcType="DECIMAL" property="amount" javaType="org.joda.money.Money" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" javaType="java.math.BigDecimal" />
     <result column="state" jdbcType="TINYINT" property="state" javaType="com.ytt.springcoredemo.model.enumeration.OrderState"/>
   </resultMap>
 
@@ -123,7 +123,7 @@
   <resultMap id="orderMapOfSub" extends="orderMap" type="com.ytt.springcoredemo.model.po.Order" >
     <collection property="subOrderList" column="order_number"
                 ofType="com.ytt.springcoredemo.model.po.SubOrder"
-                select="com.ytt.springcoredemo.mybatis.mapper.SubOrderMapper.selectByOrderNumber"/>
+                select="com.ytt.springcoredemo.dao.mapper.SubOrderMapper.selectByOrderNumber"/>
   </resultMap>
 
   <sql id="Order_Select_Column_List_Param_Selective">

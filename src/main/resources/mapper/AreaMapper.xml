@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ytt.springcoredemo.mybatis.mapper.AreaMapper">
+<mapper namespace="com.ytt.springcoredemo.dao.mapper.AreaMapper">
   <resultMap id="BaseResultMap" type="com.ytt.springcoredemo.model.po.Area">
     <id column="id" jdbcType="BIGINT" property="id" javaType="java.lang.Integer" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" javaType="java.time.LocalDateTime"/>

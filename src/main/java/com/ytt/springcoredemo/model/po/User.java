@@ -23,6 +23,8 @@ public class User extends BaseEntity<Long> {
 
     private String password;
 
-    private int age;
+    private Byte sex;
+
+    private Byte age;
 
 }

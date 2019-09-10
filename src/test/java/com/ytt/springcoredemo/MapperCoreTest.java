@@ -1,7 +1,7 @@
 package com.ytt.springcoredemo;
 
 import com.ytt.springcoredemo.model.po.Order;
-import com.ytt.springcoredemo.mybatis.mapper.OrderMapper;
+import com.ytt.springcoredemo.dao.mapper.OrderMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;

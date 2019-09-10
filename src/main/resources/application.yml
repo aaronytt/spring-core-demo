@@ -1,3 +1,5 @@
+server:
+  port: 8080
 
 logging:
   config: classpath:logback-spring.xml
@@ -26,6 +28,55 @@ spring:
       connection-timeout: 60000
       connection-test-query: 'SELECT 1'
 
+  resources:
+    static-locations: 'classpath:/static/'
+    cache:
+      cachecontrol:
+        max-age: 10s
+    #        no-cache: false
+    #        s-max-age: 20
+
+  mvc:
+    view:
+      prefix: '/resources/templates/'
+      suffix: '.html'
+    static-path-pattern: '/static/**'
+
+  #redis配置开始
+  # Redis数据库索引（默认为0）
+  redis:
+    database: 0
+    # Redis服务器地址
+#    host: 192.168.1.7
+    # Redis服务器连接端口
+#    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password: 123456
+    # 连接池最大连接数（使用负值表示没有限制）
+    jedispool:
+      max-active: 1024
+      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+      max-wait: 10000
+      # 连接池中的最大空闲连接
+      max-idle: 200
+      # 连接池中的最小空闲连接
+      min-idle: 0
+    # 连接超时时间（毫秒）
+    timeout: 10000
+    #节点
+    cluster:
+      nodes: 192.168.1.7:6381,192.168.1.7:6382,192.168.1.7:6383,192.168.1.7:6384,192.168.1.7:6385,192.168.1.7:6386
+    #redis配置结束
+    block-when-exhausted: true
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 10000
+      cache-null-values: false
+#      keyPrefix: ""
+#      useKeyPrefix: true
+
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
   #  typeAliasesPackage: com.ytt
@@ -33,6 +84,7 @@ mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     useGeneratedKeys: true
+
 pagehelper:
   helperDialect: mysql
   reasonable: true

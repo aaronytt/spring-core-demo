@@ -5,6 +5,7 @@ import lombok.*;
 import org.joda.money.Money;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * @Author: aaron
@@ -22,6 +23,6 @@ public class Good extends BaseEntity<Long> {
 
     private String name;
 
-    private Money price;
+    private BigDecimal price;
 
 }

@@ -5,6 +5,7 @@ import com.ytt.springcoredemo.model.enumeration.OrderState;
 import lombok.*;
 import org.joda.money.Money;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Builder
@@ -19,7 +20,7 @@ public class Order extends BaseEntity<Long> {
 
     private Long customerId;
 
-    private Money amount;
+    private BigDecimal amount;
 
     private OrderState state;
 
