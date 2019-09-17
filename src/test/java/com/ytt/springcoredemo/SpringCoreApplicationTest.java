@@ -39,16 +39,9 @@ public class SpringCoreApplicationTest {
     @Autowired
     private OrderService orderService;
 
-    @Autowired
-    private TestService testService;
-
     @Test
     public void test(){
-        System.out.println(userService.fetchByID(29l));
 
-        System.out.println(orderService.fetchByID(2l));
-
-        testService.testTransactional();
     }
 
     @Test
