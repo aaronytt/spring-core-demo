@@ -1,7 +1,8 @@
-package com.ytt.springcoredemo.dao.mapper;
+package com.ytt.springcoredemo.dao.mapper.base;
 
+import com.ytt.springcoredemo.dao.mapper.core.CoreMapper;
 import com.ytt.springcoredemo.model.po.Good;
-import com.ytt.springcoredemo.dao.mapper.base.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 /**
@@ -11,7 +12,7 @@ import org.apache.ibatis.annotations.Select;
  * @Modiflid By:
  */
 //@Mapper
-public interface GoodMapper extends BaseMapper<Good, Long> {
+public interface GoodMapper extends CoreMapper<Good, Long> {
 
     @Select("SELECT count(0) FROM goods")
     long getCount();

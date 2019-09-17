@@ -1,7 +1,7 @@
 package com.ytt.springcoredemo.service.base;
 
 import com.ytt.springcoredemo.model.BaseEntity;
-import com.ytt.springcoredemo.dao.mapper.base.BaseMapper;
+import com.ytt.springcoredemo.dao.mapper.core.CoreMapper;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * @Date: 2:47 2-119/8/1
  * @Modiflid By:
  */
-public abstract class AbstractCrudServiceImpl<T extends BaseEntity<ID>, ID, K extends BaseMapper<T, ID>>
+public abstract class AbstractCrudServiceImpl<T extends BaseEntity<ID>, ID, K extends CoreMapper<T, ID>>
         extends DaoBaseServiceImpl<T, ID, K>
         implements CrudBaseService<T, ID> {
 
@@ -51,8 +51,8 @@ public abstract class AbstractCrudServiceImpl<T extends BaseEntity<ID>, ID, K ex
     }
 
     @Override
-    public int updateByPrimaryKey(ID id){
-        return mapper.updateByPrimaryKey(id);
+    public int updateByPrimaryKey(T record){
+        return mapper.updateByPrimaryKey(record);
     }
 
 }

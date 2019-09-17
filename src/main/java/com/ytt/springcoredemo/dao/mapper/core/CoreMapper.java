@@ -1,8 +1,8 @@
-package com.ytt.springcoredemo.dao.mapper.base;
+package com.ytt.springcoredemo.dao.mapper.core;
 
 import java.util.List;
 
-public interface BaseMapper<T,ID> {
+public interface CoreMapper<T,ID> {
 
     int insert(T record);
 
@@ -18,6 +18,6 @@ public interface BaseMapper<T,ID> {
 
     int updateByPrimaryKeyWithBLOBs(T record);
 
-    int updateByPrimaryKey(ID id);
+    int updateByPrimaryKey(T record);
 
 }

@@ -1,5 +1,6 @@
 package com.ytt.springcoredemo.config.datasource;
 
+import com.ytt.springcoredemo.dao.handler.OrderStateTypeHandler;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -29,7 +30,7 @@ public class BaseDataSourceConfig {
             throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapping/base/*.xml"));
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapping/base/*.xml"));
         return bean.getObject();
     }
 

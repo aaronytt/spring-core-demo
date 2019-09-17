@@ -1,9 +1,11 @@
 package com.ytt.springcoredemo;
 
 import com.ytt.springcoredemo.model.Car;
+import com.ytt.springcoredemo.model.enumeration.OrderState;
 import com.ytt.springcoredemo.model.po.Area;
 import com.ytt.springcoredemo.model.po.Good;
 import com.ytt.springcoredemo.model.po.Order;
+import com.ytt.springcoredemo.model.po.User;
 import com.ytt.springcoredemo.service.AreaService;
 import com.ytt.springcoredemo.service.GoodService;
 import com.ytt.springcoredemo.service.OrderService;
@@ -13,8 +15,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.awt.*;
+import java.math.BigDecimal;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringCoreApplication.class)
@@ -35,26 +39,16 @@ public class SpringCoreApplicationTest {
     @Autowired
     private OrderService orderService;
 
-    @Test
-    public void contextLoads() {
-    }
+    @Autowired
+    private TestService testService;
 
     @Test
     public void test(){
+        System.out.println(userService.fetchByID(29l));
 
-        System.out.println(car);
+        System.out.println(orderService.fetchByID(2l));
 
-//        User user = new User();
-//        user.setUsername("ytt");
-//        user.setPassword("1234456");
-//        user.setAge(10);
-//
-//        userService.save(user);
-//        System.out.println(user);
-
-//        Good good = goodService.fetchByID(1l);
-//        System.out.println(good);
-
+        testService.testTransactional();
     }
 
     @Test

@@ -25,8 +25,8 @@ public class RedisClusterConfig {
     @Value("${spring.redis.database}")
     private String database;
 
-    @Value("${spring.redis.password}")
-    private String password;
+//    @Value("${spring.redis.password}")
+//    private String password;
 
     @Value("${spring.redis.timeout}")
     private int timeout;
@@ -61,7 +61,10 @@ public class RedisClusterConfig {
         jedisPoolConfig.setBlockWhenExhausted(blockWhenExhausted);
         // 是否启用pool的jmx管理功能, 默认true
         jedisPoolConfig.setJmxEnabled(true);
-        JedisCluster jedisCluster = new JedisCluster(nodes, timeout,timeout * 5, 2, password, jedisPoolConfig);
+        //带密码
+//        JedisCluster jedisCluster = new JedisCluster(nodes, timeout,timeout * 5, 2, password, jedisPoolConfig);
+        //没密码
+        JedisCluster jedisCluster = new JedisCluster(nodes, timeout,timeout * 5, 2, jedisPoolConfig);
 
         return jedisCluster;
     }

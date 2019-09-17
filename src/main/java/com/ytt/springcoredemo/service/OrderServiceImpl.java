@@ -1,8 +1,7 @@
 package com.ytt.springcoredemo.service;
 
 import com.ytt.springcoredemo.model.po.Order;
-import com.ytt.springcoredemo.dao.mapper.OrderMapper;
-import com.ytt.springcoredemo.service.OrderService;
+import com.ytt.springcoredemo.dao.mapper.order.OrderMapper;
 import com.ytt.springcoredemo.service.base.AbstractCrudServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,7 @@
 package com.ytt.springcoredemo.service;
 
-import com.ytt.springcoredemo.service.GoodService;
 import com.ytt.springcoredemo.model.po.Good;
-import com.ytt.springcoredemo.dao.mapper.GoodMapper;
+import com.ytt.springcoredemo.dao.mapper.base.GoodMapper;
 import com.ytt.springcoredemo.service.base.AbstractCrudServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

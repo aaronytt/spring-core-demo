@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ytt.springcoredemo.dao.mapper.OrderMapper">
+<mapper namespace="com.ytt.springcoredemo.dao.mapper.order.OrderMapper">
   
   <resultMap id="orderMap" type="com.ytt.springcoredemo.model.po.Order">
     <id column="id" jdbcType="INTEGER" property="id" javaType="java.lang.Long" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" javaType="java.time.LocalDateTime"/>
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" javaType="java.time.LocalDateTime"/>
 
     <result column="order_number" jdbcType="VARCHAR" property="orderNumber" javaType="java.lang.String" />
     <result column="customer_id" jdbcType="INTEGER" property="customerId" javaType="java.lang.Long" />
     <result column="amount" jdbcType="DECIMAL" property="amount" javaType="java.math.BigDecimal" />
     <result column="state" jdbcType="TINYINT" property="state" javaType="com.ytt.springcoredemo.model.enumeration.OrderState"/>
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" javaType="java.time.LocalDateTime"/>
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" javaType="java.time.LocalDateTime"/>
   </resultMap>
 
   <sql id="Order_Add_Column_List">
@@ -74,24 +74,24 @@
   </sql>
 
   <sql id="Order_Column_List">
-    id, order_number, customer_id, amount, `state`, create_time, update_time
+    id, order_number, customer_id, amount, `state`,create_time, update_time
   </sql>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="orderMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="orderMap">
     select
         <include refid="Order_Column_List" />
     from `order`
     where id = #{id}
   </select>
 
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from `order`
     where id = #{id}
   </delete>
 
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ytt.springcoredemo.model.po.Order" useGeneratedKeys="true">
     insert into `order`
-        (<include refid="Order_Column_List"/>)
+        (<include refid="Order_Add_Column_List"/>)
     values
         (<include refid="Order_Add_Column_List_Param"/>)
   </insert>
@@ -123,7 +123,7 @@
   <resultMap id="orderMapOfSub" extends="orderMap" type="com.ytt.springcoredemo.model.po.Order" >
     <collection property="subOrderList" column="order_number"
                 ofType="com.ytt.springcoredemo.model.po.SubOrder"
-                select="com.ytt.springcoredemo.dao.mapper.SubOrderMapper.selectByOrderNumber"/>
+                select="com.ytt.springcoredemo.dao.mapper.order.SubOrderMapper.selectByOrderNumber"/>
   </resultMap>
 
   <sql id="Order_Select_Column_List_Param_Selective">

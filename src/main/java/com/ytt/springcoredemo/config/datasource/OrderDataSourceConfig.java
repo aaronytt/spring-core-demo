@@ -1,19 +1,16 @@
 package com.ytt.springcoredemo.config.datasource;
 
-import com.mysql.cj.jdbc.MysqlXADataSource;
+import com.ytt.springcoredemo.dao.handler.OrderStateTypeHandler;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
-import org.springframework.boot.jta.atomikos.AtomikosDataSourceBean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
@@ -28,12 +25,17 @@ public class OrderDataSourceConfig {
 //        return DataSourceBuilder.create().build();
 //    }
 
+    @Value("mybatis.type-handlers-package")
+    private String typeAliasesPackage;
+
     @Bean(name = "orderSqlSessionFactory")
     public SqlSessionFactory sqlSessionFactory(@Qualifier("orderDatasource") DataSource dataSource)
             throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapping/order/*.xml"));
+        bean.setTypeAliasesPackage("org.apache.ibatis.type");
+        bean.setTypeHandlers(new OrderStateTypeHandler());
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapping/order/*.xml"));
         return bean.getObject();
     }
 

@@ -1,13 +1,11 @@
 package com.ytt.springcoredemo.service;
 
 import com.ytt.springcoredemo.model.dto.UserDTO;
-import com.ytt.springcoredemo.service.UserService;
 import com.ytt.springcoredemo.model.po.User;
-import com.ytt.springcoredemo.dao.mapper.UserMapper;
+import com.ytt.springcoredemo.dao.mapper.base.UserMapper;
 import com.ytt.springcoredemo.service.base.AbstractCrudServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;

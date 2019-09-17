@@ -6,6 +6,7 @@ import org.springframework.aop.framework.autoproxy.InfrastructureAdvisorAutoProx
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.AnnotationTransactionAttributeSource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.interceptor.TransactionInterceptor;
 
 /**
@@ -27,7 +28,7 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
  *          2.如果正常：commitTransactionAfterReturning，利用事务管理器提交事务
  *
  */
-//@EnableTransactionManagement
+@EnableTransactionManagement
 @SpringBootApplication
 @MapperScan("com.ytt.springcoredemo.dao.mapper")
 public class SpringCoreApplication {

@@ -10,6 +10,6 @@ public interface UpdateBaseService<T extends BaseEntity<ID>, ID>{
 
     int updateByPrimaryKeyWithBLOBs(T record);
 
-    int updateByPrimaryKey(ID id);
+    int updateByPrimaryKey(T record);
 
 }

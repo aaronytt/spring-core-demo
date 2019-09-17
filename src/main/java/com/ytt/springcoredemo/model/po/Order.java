@@ -3,7 +3,6 @@ package com.ytt.springcoredemo.model.po;
 import com.ytt.springcoredemo.model.BaseEntity;
 import com.ytt.springcoredemo.model.enumeration.OrderState;
 import lombok.*;
-import org.joda.money.Money;
 
 import java.math.BigDecimal;
 import java.util.List;
